@@ -1,0 +1,56 @@
+# ================================
+# Project: Pandas CSV Analysis
+# ================================
+
+import pandas as pd
+
+# Step 1: Load Dataset
+# Replace 'data.csv' with your actual file name
+df = pd.read_csv('data.csv')
+
+# Step 2: Basic Inspection
+print("\n--- FIRST 5 ROWS ---")
+print(df.head())
+
+print("\n--- LAST 5 ROWS ---")
+print(df.tail())
+
+print("\n--- DATA INFO ---")
+print(df.info())
+
+# Step 3: Summary Statistics
+print("\n--- SUMMARY STATISTICS ---")
+print(df.describe())
+
+# Additional stats (for all columns)
+print("\n--- ADDITIONAL STATS ---")
+print("Mean:\n", df.mean(numeric_only=True))
+print("Median:\n", df.median(numeric_only=True))
+print("Minimum:\n", df.min(numeric_only=True))
+print("Maximum:\n", df.max(numeric_only=True))
+print("Count:\n", df.count())
+
+# Step 4: Column Selection
+# Replace 'column_name' with actual column
+selected_columns = df[['column_name']]
+print("\n--- SELECTED COLUMN ---")
+print(selected_columns.head())
+
+# Step 5: Row Filtering
+# Example: Filter rows where a column value > threshold
+# Replace 'column_name' and value accordingly
+filtered_data = df[df['column_name'] > 50]
+
+print("\n--- FILTERED DATA ---")
+print(filtered_data.head())
+
+# Step 6: Save Filtered Data
+filtered_data.to_csv('filtered_output.csv', index=False)
+
+print("\nFiltered data saved as 'filtered_output.csv'")
+
+# Step 7: Save Summary Report
+summary = df.describe()
+summary.to_csv('summary_report.csv')
+
+print("Summary report saved as 'summary_report.csv'")
